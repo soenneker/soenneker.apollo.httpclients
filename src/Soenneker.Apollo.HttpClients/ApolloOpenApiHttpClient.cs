@@ -11,7 +11,7 @@ using Soenneker.Utils.HttpClientCache.Abstract;
 
 namespace Soenneker.Apollo.HttpClients;
 
-///<inheritdoc cref="IApolloOpenApiHttpClient"/>
+/// <inheritdoc cref="IApolloOpenApiHttpClient"/>
 public sealed class ApolloOpenApiHttpClient : IApolloOpenApiHttpClient
 {
     private readonly IHttpClientCache _httpClientCache;
