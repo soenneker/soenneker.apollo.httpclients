@@ -83,7 +83,7 @@ builder.Services.AddApolloOpenApiHttpClientAsScoped();
 
 - Reuse the returned client; do not dispose it after individual requests.
 - Configuration is evaluated when the cached client is created. Changing configuration does not mutate an already-created client.
-- Let the dependency-injection container dispose `IApolloOpenApiHttpClient`. Disposing a scoped provider does not remove the shared cached client.
+- Let the dependency-injection container dispose `IApolloOpenApiHttpClient`. Disposal removes and disposes its named client from the shared cache.
 - The registration methods use `TryAdd` for the provider, so an application-supplied implementation is preserved.
 
 For typed endpoint methods and generated response models, use [`Soenneker.Apollo.OpenApiClientUtil`](https://www.nuget.org/packages/Soenneker.Apollo.OpenApiClientUtil).
