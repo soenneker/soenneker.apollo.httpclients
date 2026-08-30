@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System.Threading;
 namespace Soenneker.Apollo.HttpClients.Abstract;
 /// <summary>
-/// A .NET thread-safe singleton HttpClient for 
+/// Provides the cached, authenticated <see cref="HttpClient"/> used by the Apollo OpenAPI client.
 /// </summary>
 public interface IApolloOpenApiHttpClient: IDisposable, IAsyncDisposable
 {

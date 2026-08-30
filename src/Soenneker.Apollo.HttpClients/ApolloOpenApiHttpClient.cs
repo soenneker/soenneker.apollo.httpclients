@@ -11,7 +11,6 @@ using Soenneker.Utils.HttpClientCache.Abstract;
 
 namespace Soenneker.Apollo.HttpClients;
 
-/// <inheritdoc cref="IApolloOpenApiHttpClient"/>
 public sealed class ApolloOpenApiHttpClient : IApolloOpenApiHttpClient
 {
     private readonly IHttpClientCache _httpClientCache;
@@ -47,11 +46,12 @@ public sealed class ApolloOpenApiHttpClient : IApolloOpenApiHttpClient
 
     public void Dispose()
     {
-        _httpClientCache.RemoveSync(nameof(ApolloOpenApiHttpClient));
+        // The singleton cache owns the named client. A scoped provider must not remove it.
     }
 
     public ValueTask DisposeAsync()
     {
-        return _httpClientCache.Remove(nameof(ApolloOpenApiHttpClient));
+        // Kept for API compatibility; the singleton cache owns the named client.
+        return ValueTask.CompletedTask;
     }
 }

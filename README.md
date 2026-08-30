@@ -1,6 +1,7 @@
 [![](https://img.shields.io/nuget/v/soenneker.apollo.httpclients.svg?style=for-the-badge)](https://www.nuget.org/packages/soenneker.apollo.httpclients/)
 [![](https://img.shields.io/github/actions/workflow/status/soenneker/soenneker.apollo.httpclients/publish-package.yml?style=for-the-badge)](https://github.com/soenneker/soenneker.apollo.httpclients/actions/workflows/publish-package.yml)
 [![](https://img.shields.io/nuget/dt/soenneker.apollo.httpclients.svg?style=for-the-badge)](https://www.nuget.org/packages/soenneker.apollo.httpclients/)
+[![](https://img.shields.io/github/actions/workflow/status/soenneker/soenneker.apollo.httpclients/codeql.yml?label=CodeQL&style=for-the-badge)](https://github.com/soenneker/soenneker.apollo.httpclients/actions/workflows/codeql.yml)
 
 # Soenneker.Apollo.HttpClients
 
@@ -82,7 +83,7 @@ builder.Services.AddApolloOpenApiHttpClientAsScoped();
 
 - Reuse the returned client; do not dispose it after individual requests.
 - Configuration is evaluated when the cached client is created. Changing configuration does not mutate an already-created client.
-- Let the dependency-injection container dispose `IApolloOpenApiHttpClient`. Disposal removes its entry from the shared HTTP client cache.
+- Let the dependency-injection container dispose `IApolloOpenApiHttpClient`. Disposing a scoped provider does not remove the shared cached client.
 - The registration methods use `TryAdd` for the provider, so an application-supplied implementation is preserved.
 
 For typed endpoint methods and generated response models, use [`Soenneker.Apollo.OpenApiClientUtil`](https://www.nuget.org/packages/Soenneker.Apollo.OpenApiClientUtil).

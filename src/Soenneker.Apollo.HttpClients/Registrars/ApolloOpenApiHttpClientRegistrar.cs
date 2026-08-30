@@ -11,7 +11,7 @@ namespace Soenneker.Apollo.HttpClients.Registrars;
 public static class ApolloOpenApiHttpClientRegistrar
 {
     /// <summary>
-    /// Adds <see cref="ApolloOpenApiHttpClient"/> as a singleton service. <para/>
+    /// Adds <see cref="IApolloOpenApiHttpClient"/> as a singleton service backed by the singleton HTTP-client cache.
     /// </summary>
     /// <param name="services">Service collection that receives the registration.</param>
     /// <returns>The same service collection, so additional registrations can be chained.</returns>
@@ -24,7 +24,7 @@ public static class ApolloOpenApiHttpClientRegistrar
     }
 
     /// <summary>
-    /// Adds <see cref="ApolloOpenApiHttpClient"/> as a scoped service. <para/>
+    /// Adds <see cref="IApolloOpenApiHttpClient"/> as a scoped service backed by the singleton HTTP-client cache.
     /// </summary>
     /// <param name="services">Service collection that receives the registration.</param>
     /// <returns>The same service collection, so additional registrations can be chained.</returns>
