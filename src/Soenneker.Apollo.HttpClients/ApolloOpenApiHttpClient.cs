@@ -29,7 +29,7 @@ public sealed class ApolloOpenApiHttpClient : IApolloOpenApiHttpClient
     {
         return _httpClientCache.Get(nameof(ApolloOpenApiHttpClient), (config: _config, baseUrl: _config["Apollo:ClientBaseUrl"] ?? _prodBaseUrl), static state =>
         {
-            var apiKey = state.config.GetValueStrict<string>("Apollo:ApiKey");
+            var apiKey = state.config.GetStringStrict("Apollo:ApiKey");
             string authHeaderName = state.config["Apollo:AuthHeaderName"] ?? "x-api-key";
             string authHeaderValueTemplate = state.config["Apollo:AuthHeaderValueTemplate"] ?? "{token}";
             string authHeaderValue = authHeaderValueTemplate.Replace("{token}", apiKey, StringComparison.Ordinal);
